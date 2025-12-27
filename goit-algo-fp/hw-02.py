@@ -1,20 +1,35 @@
+from __future__ import annotations
+
 import math
 import turtle
 from dataclasses import dataclass
+
 
 @dataclass(frozen=True)
 class Vec:
     x: float
     y: float
-    def __add__(self, o): return Vec(self.x + o.x, self.y + o.y)
-    def __sub__(self, o): return Vec(self.x - o.x, self.y - o.y)
-    def __mul__(self, k: float): return Vec(self.x * k, self.y * k)
 
-def rot(v: Vec, c: float, s: float) -> Vec:
-    # rotate by angle with precomputed cos/sin
-    return Vec(v.x * c - v.y * s, v.x * s + v.y * c)
+    def __add__(self, other: "Vec") -> "Vec":
+        return Vec(self.x + other.x, self.y + other.y)
+
+    def __sub__(self, other: "Vec") -> "Vec":
+        return Vec(self.x - other.x, self.y - other.y)
+
+    def __mul__(self, k: float) -> "Vec":
+        return Vec(self.x * k, self.y * k)
+
+    def length(self) -> float:
+        return math.hypot(self.x, self.y)
+
+
+def rotate(v: Vec, cos_a: float, sin_a: float) -> Vec:
+    """Поворот вектора v на кут, заданий cos/sin."""
+    return Vec(v.x * cos_a - v.y * sin_a, v.x * sin_a + v.y * cos_a)
+
 
 def draw_poly(t: turtle.Turtle, pts: list[Vec]) -> None:
+    """Намалювати замкнений багатокутник."""
     t.penup()
     t.goto(pts[0].x, pts[0].y)
     t.pendown()
@@ -22,68 +37,105 @@ def draw_poly(t: turtle.Turtle, pts: list[Vec]) -> None:
         t.goto(p.x, p.y)
     t.goto(pts[0].x, pts[0].y)
 
-def pythagoras(t: turtle.Turtle, base_a: Vec, base_b: Vec, depth: int, c: float, s: float, min_size: float = 2.0) -> None:
-    # base_a -> base_b is bottom side of square
-    v = base_b - base_a
-    size = math.hypot(v.x, v.y)
-    if depth <= 0 or size < min_size:
+
+def draw_segment(t: turtle.Turtle, a: Vec, b: Vec) -> None:
+    """Намалювати відрізок між двома точками."""
+    t.penup()
+    t.goto(a.x, a.y)
+    t.pendown()
+    t.goto(b.x, b.y)
+
+
+def pythagoras_tree(
+    t: turtle.Turtle,
+    a: Vec,
+    b: Vec,
+    depth: int,
+    cos45: float,
+    sin45: float,
+    min_size: float,
+    bare: bool,
+) -> None:
+    if depth <= 0:
         return
 
-    # square points: a, b, c, d
-    # perpendicular vector (rotate by +90): (-vy, vx)
+    v = b - a
+    size = v.length()
+    if size < min_size:
+        return
+
+    # Перпендикуляр до основи (поворот на +90°)
     perp = Vec(-v.y, v.x)
-    c1 = base_b + perp
-    d1 = base_a + perp
-    draw_poly(t, [base_a, base_b, c1, d1])
 
-    # top edge: d1 -> c1
-    top_v = c1 - d1  # same as v
+    # Вершини квадрату (якщо він потрібен)
+    c = b + perp
+    d = a + perp
 
-    # For Pythagoras tree: build two squares on top edge, rotated by angle
-    # Compute split point 'p' on top edge based on angle (classic construction)
-    # left branch vector = rotate(top_v, -angle) scaled by cos(angle)
-    # right branch vector = rotate(top_v, + (90-angle)) scaled by sin(angle) ... but easier:
-    # We'll use a known vector construction:
-    # Let u = top_v
-    # left_u = rot(u, c, s) * c   (scale = cos)
-    # right_u = rot(u, -s, c) * s  (rotate by (90 - angle)) and scale by sin
-    # This yields a nice symmetric tree for 45°.
-    left_u = rot(top_v, c, s) * c
-    # right_u = rot(top_v, -s, c) * s
+    # Точка вершини "даху" (для 45°)
+    top = c - d
+    p = d + rotate(top, cos45, sin45) * cos45
 
-    p = d1 + left_u  # meeting point on the "roof"
+    if bare:
+        # ОГОЛЕНЕ ДЕРЕВО:
+        # Малюємо лише "Y"-подібні гілки:
+        # 1) стовбур: середина основи -> середина верху
+        mid_base = Vec((a.x + b.x) / 2, (a.y + b.y) / 2)
+        mid_top  = Vec((d.x + c.x) / 2, (d.y + c.y) / 2)
+        draw_segment(t, mid_base, mid_top)
 
-    # Left square on segment d1 -> p
-    pythagoras(t, d1, p, depth - 1, c, s, min_size)
+        # 2) дві гілки: з вершини "даху" до країв верхньої сторони
+        #draw_segment(t, d, p)
+        #draw_segment(t, p, c)
 
-    # Right square on segment p -> c1
-    pythagoras(t, p, c1, depth - 1, c, s, min_size)
+    else:
+        # ЗВИЧАЙНЕ ДЕРЕВО:
+        # Малюємо квадрат повністю
+        draw_poly(t, [a, b, c, d])
 
-def main():
-    level = int(input("Введіть рівень рекурсії (наприклад 10): ").strip() or "10")
+    # Рекурсія (ВАЖЛИВО: bare прокидуємо далі)
+    pythagoras_tree(t, d, p, depth - 1, cos45, sin45, min_size, bare)
+    pythagoras_tree(t, p, c, depth - 1, cos45, sin45, min_size, bare)
 
-    # default 45°
+
+def main() -> None:
+    level_str = input("Рівень рекурсії (наприклад 10): ").strip() or "10"
+    level = int(level_str)
+
+    bare_str = input("Оголене дерево? (y/n): ").strip().lower()
+    bare = (bare_str == "y")
+
     angle = math.radians(45)
-    c, s = math.cos(angle), math.sin(angle)
+    cos45, sin45 = math.cos(angle), math.sin(angle)
 
     screen = turtle.Screen()
-    screen.title("Дерево Піфагора (45°)")
-    screen.setup(width=900, height=600)
-    screen.tracer(0, 0)
+    screen.title("Дерево Піфагора (оголене)" if bare else "Дерево Піфагора (квадрати)")
+    screen.setup(width=1000, height=700)
+    screen.tracer(0, 0)  # швидше малювання (оновимо вручну)
 
     t = turtle.Turtle(visible=False)
     t.speed(0)
-    t.pensize(1)
+    t.pensize(2)
 
-    # стартовий квадрат (нижня сторона)
-    size = 140
-    a = Vec(-size/2, -270)
-    b = Vec(size/2, -270)
+    # Центрування: стартова основа по центру внизу
+    base_size = 180
+    y = -280
+    a = Vec(-base_size / 2, y)
+    b = Vec(base_size / 2, y)
 
-    pythagoras(t, a, b, level, c, s, min_size=1.5)
+    pythagoras_tree(
+        t=t,
+        a=a,
+        b=b,
+        depth=level,
+        cos45=cos45,
+        sin45=sin45,
+        min_size=3.0,
+        bare=bare,
+    )
 
     screen.update()
     turtle.done()
+
 
 if __name__ == "__main__":
     main()
