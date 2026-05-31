@@ -1,0 +1,113 @@
+Завантаження моделі allenai/specter2_base...
+Loading weights: 100% 199/199 [00:00<00:00, 640.72it/s, Materializing param=pooler.dense.weight]
+BertModel LOAD REPORT from: allenai/specter2_base
+Виконуємо чистий пошук за запитом: 'teaching machines to recognize objects in pictures'
+
+============================================================
+ РЕЗУЛЬТАТИ ЧИСТОГО СЕМАНТИЧНОГО ПОШУКУ 
+============================================================
+1. ID: paper_4753 | Score: 0.8429
+   Назва: Approximate textual retrieval
+   Категорія: cs.IR | Рік: 2007
+   Абстракт: An approximate textual retrieval algorithm for searching sources with high
+levels of defects is presented. It considers splitting the words in a query...
+----------------------------------------
+2. ID: paper_1266 | Score: 0.8335
+   Назва: Text Line Segmentation of Historical Documents: a Survey
+   Категорія: cs.CV | Рік: 2007
+   Абстракт: There is a huge amount of historical documents in libraries and in various
+National Archives that have not been exploited electronically. Although
+aut...
+----------------------------------------
+3. ID: paper_3982 | Score: 0.8286
+   Назва: Retrieving information from a noisy "knowledge network"
+   Категорія: cond-mat.stat-mech | Рік: 2007
+   Абстракт: We address the problem of retrieving information from a noisy version of the
+``knowledge networks'' introduced by Maslov and Zhang. We map this proble...
+----------------------------------------
+4. ID: paper_5444 | Score: 0.8276
+   Назва: Does P=NP?
+   Категорія: cs.CC | Рік: 2007
+   Абстракт: This paper has been withdrawn Abstract: This paper has been withdrawn by the
+author due to the publication....
+----------------------------------------
+5. ID: paper_2373 | Score: 0.8272
+   Назва: Growing Directed Networks: Estimation and Hypothesis Testing
+   Категорія: physics.soc-ph | Рік: 2007
+   Абстракт: Based only on the information gathered in a snapshot of a directed network,
+we present a formal way of checking if the proposed model is correct for t...
+----------------------------------------
+
+Виконуємо Приклад A: 'reinforcement learning' (Рік >= 2021, категорія cs.LG)...
+
+============================================================
+ ПРИКЛАД A: СУЧАСНІ СТАТТІ ПО REINFORCEMENT LEARNING 
+============================================================
+Статей не знайдено.
+
+Виконуємо Приклад B: 'reinforcement learning' (Рік <= 2015, будь-яка категорія)...
+
+============================================================
+ ПРИКЛАД B: ІСТОРИЧНІ СТАТТІ ПО REINFORCEMENT LEARNING 
+============================================================
+1. ID: paper_2962 | Score: 0.8381
+   Назва: Using Access Data for Paper Recommendations on ArXiv.org
+   Категорія: cs.DL | Рік: 2007
+   Абстракт: This thesis investigates in the use of access log data as a source of
+information for identifying related scientific papers. This is done for
+arXiv.or...
+----------------------------------------
+2. ID: paper_4753 | Score: 0.8312
+   Назва: Approximate textual retrieval
+   Категорія: cs.IR | Рік: 2007
+   Абстракт: An approximate textual retrieval algorithm for searching sources with high
+levels of defects is presented. It considers splitting the words in a query...
+----------------------------------------
+3. ID: paper_3358 | Score: 0.8291
+   Назва: Direct Optimization of Ranking Measures
+   Категорія: cs.IR | Рік: 2007
+   Абстракт: Web page ranking and collaborative filtering require the optimization of
+sophisticated performance measures. Current Support Vector approaches are
+una...
+----------------------------------------
+4. ID: paper_2373 | Score: 0.8290
+   Назва: Growing Directed Networks: Estimation and Hypothesis Testing
+   Категорія: physics.soc-ph | Рік: 2007
+   Абстракт: Based only on the information gathered in a snapshot of a directed network,
+we present a formal way of checking if the proposed model is correct for t...
+----------------------------------------
+5. ID: paper_3982 | Score: 0.8263
+   Назва: Retrieving information from a noisy "knowledge network"
+   Категорія: cond-mat.stat-mech | Рік: 2007
+   Абстракт: We address the problem of retrieving information from a noisy version of the
+``knowledge networks'' introduced by Maslov and Zhang. We map this proble...
+----------------------------------------
+
+============================================================
+ ПОРІВНЯННЯ ВИДАЧІ ТА ПОЯСНЕННЯ ВІДМІННОСТЕЙ 
+============================================================
+Приклад A показує сучасні статті (від 2021 року), які сфокусовані виключно на домені cs.LG
+(Machine Learning). Тут ми бачимо що дані відсутні.
+Приклад B використовує той самий запит, але повертає фундаментальні та старі роботи (до 2015 року).
+Категорії тут можуть бути різними (наприклад, math.OC чи cs.AI).
+ 
+Зріз даних arxiv_subset.parquet містить архівні матеріали (переважно 2007 року). 
+Через відсутність у вибірці свіжих публікацій за останні 5 років, 
+фільтрація у Прикладі А повернула порожню множину, що є очікуваним та 
+логічним результатом для такої структури даних.
+Для запиту "reinforcement learning" у Прикладі B модель знайшла статтю "Direct Optimization of Ranking Measures" 
+із суміжного напрямку інформаційного пошуку (cs.IR), що також логічно, 
+адже методи навчання з підкріпленням часто застосовуються для оптимізації ранжування.
+
+============================================================
+ РОЗРАХУНОК ТА ПОРІВНЯННЯ МЕТРИК ЛОКАЛЬНО 
+============================================================
+Запит для локального аналізу: 'teaching machines to recognize objects in pictures'
+
+№   | Top-5 Dot Product         | Top-5 Cosine Sim          | Top-5 L2 Distance        
+------------------------------------------------------------------------------
+1   | paper_4753 (sc: 0.8431)   | paper_4753 (sc: 0.8431)   | paper_4753 (dist: 0.5602)
+2   | paper_1266 (sc: 0.8334)   | paper_1266 (sc: 0.8334)   | paper_1266 (dist: 0.5773)
+3   | paper_3982 (sc: 0.8276)   | paper_3982 (sc: 0.8276)   | paper_3982 (dist: 0.5872)
+4   | paper_2373 (sc: 0.8276)   | paper_2373 (sc: 0.8276)   | paper_2373 (dist: 0.5873)
+5   | paper_3664 (sc: 0.8266)   | paper_3664 (sc: 0.8266)   | paper_3664 (dist: 0.5888)

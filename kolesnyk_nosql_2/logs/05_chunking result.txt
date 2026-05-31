@@ -1,0 +1,174 @@
+Завантаження моделі allenai/specter2_base...
+Loading weights: 100% 199/199 [00:00<00:00, 548.69it/s, Materializing param=pooler.dense.weight]
+BertModel LOAD REPORT from: allenai/specter2_base
+Обрано 30 статей із найдовшими анотаціями (довжина від 299 до 338 слів).
+Видалення старого індексу arxiv-chunks-fixed...
+Створення нового індексу arxiv-chunks-fixed...
+Видалення старого індексу arxiv-chunks-semantic...
+Створення нового індексу arxiv-chunks-semantic...
+
+Генерація чанків та завантаження для стратегії: fixed...
+Завантаження в arxiv-chunks-fixed: 100%|██████████| 5/5 [00:04<00:00,  1.13it/s]
+Успішно завантажено 241 чанків у arxiv-chunks-fixed!
+
+Генерація чанків та завантаження для стратегії: semantic...
+Завантаження в arxiv-chunks-semantic: 100%|██████████| 5/5 [00:04<00:00,  1.13it/s]
+Успішно завантажено 205 чанків у arxiv-chunks-semantic!
+
+Очікування індексації даних на серверах Pinecone...
+
+======================================================================
+ ПОШУК: СТРАТЕГІЯ FIXED-SIZE CHUNKS 
+======================================================================
+Запит: 'mathematical models and algorithms'
+
+1. ID чанка: chunk_fixed_0705.4343_7 | Score: 0.7985
+   Назва статті: A Systematic Study of the Final Masses of Gas Giant Planets
+   Категорія: astro-ph | Номер чанка: 7
+   Текст чанка: We derive analytic formulae for the final masses in the different regions and the locations of the boundaries, which are helpful to gain a systematic understanding of the masses of...
+--------------------------------------------------
+
+2. ID чанка: chunk_fixed_0705.1045_1 | Score: 0.7958
+   Назва статті: Conjectures on exact solution of three - dimensional (3D) simple
+  orthorhombic Ising lattices
+   Категорія: cond-mat.stat-mech | Номер чанка: 1
+   Текст чанка: the eigenvectors, are proposed to serve as a boundary condition to deal with the topologic problem of the 3D Ising model. The partition function of the 3D simple orthorhombic Ising...
+--------------------------------------------------
+
+3. ID чанка: chunk_fixed_0706.1089_6 | Score: 0.7886
+   Назва статті: Geochemistry of U and Th and its Influence on the Origin and Evolution
+  of the Crust of Earth and the Biological Evolution
+   Категорія: physics.geo-ph | Номер чанка: 6
+   Текст чанка: them. We have tried to develop an integrated view to explain some problems in the tectonics of Earth and evolution, bio-evolution, and planetary dynamics through U and Th geochemis...
+--------------------------------------------------
+
+4. ID чанка: chunk_fixed_0704.2930_5 | Score: 0.7818
+   Назва статті: Probing Inward Motions in Starless Cores Using The HCN J = 1-0 Hyperfine
+  Transitions : A Pointing Survey Toward Central Regions
+   Категорія: astro-ph | Номер чанка: 5
+   Текст чанка: source are nearly similar. These may mean that most of starless cores are in similar kinematic states across the layers of the cores. We identify 17 infall candidates using all ava...
+--------------------------------------------------
+
+5. ID чанка: chunk_fixed_0706.1089_7 | Score: 0.7783
+   Назва статті: Geochemistry of U and Th and its Influence on the Origin and Evolution
+  of the Crust of Earth and the Biological Evolution
+   Категорія: physics.geo-ph | Номер чанка: 7
+   Текст чанка: evolution is a good way to build bridges between different disciplines of science in order to better understand the Earth and planets....
+--------------------------------------------------
+
+======================================================================
+ ПОШУК: СТРАТЕГІЯ SEMANTIC CHUNKS 
+======================================================================
+Запит: 'mathematical models and algorithms'
+
+1. ID чанка: chunk_semantic_0706.1089_5 | Score: 0.7880
+   Назва статті: Geochemistry of U and Th and its Influence on the Origin and Evolution
+  of the Crust of Earth and the Biological Evolution
+   Категорія: physics.geo-ph | Номер чанка: 5
+   Текст чанка: We believe that a comprehensive exploration on energy sources and their evolution is a good way to build bridges between different disciplines of science in order to better underst...
+--------------------------------------------------
+
+2. ID чанка: chunk_semantic_0704.2930_4 | Score: 0.7791
+   Назва статті: Probing Inward Motions in Starless Cores Using The HCN J = 1-0 Hyperfine
+  Transitions : A Pointing Survey Toward Central Regions
+   Категорія: astro-ph | Номер чанка: 4
+   Текст чанка: Moreover the dV values obtained from different HCN hyperfine lines for each source are nearly similar. These may mean that most of starless cores are in similar kinematic states ac...
+--------------------------------------------------
+
+3. ID чанка: chunk_semantic_0705.4343_1 | Score: 0.7783
+   Назва статті: A Systematic Study of the Final Masses of Gas Giant Planets
+   Категорія: astro-ph | Номер чанка: 1
+   Текст чанка: We first derive an analytical formula for surface density profile near the planetary orbit from considerations of the balance of force and the dynamical stability....
+--------------------------------------------------
+
+4. ID чанка: chunk_semantic_0704.3925_2 | Score: 0.7750
+   Назва статті: Dark matter in the Milky Way, II. the HI gas distribution as a tracer of
+  the gravitational potential
+   Категорія: astro-ph | Номер чанка: 2
+   Текст чанка: We explored several models, reflecting different dark matter distributions. Each of these models was set up to solve the combined Poisson-Boltzmann equation in a self-consistent wa...
+--------------------------------------------------
+
+5. ID чанка: chunk_semantic_0704.1127_6 | Score: 0.7776
+   Назва статті: Sensitivity of solar off-limb line profiles to electron density
+  stratification and the velocity distribution anisotropy
+   Категорія: astro-ph | Номер чанка: 6
+   Текст чанка: a temperature anisotropy) is not so clear cut as previous investigations of UVCS data suggested. ......
+--------------------------------------------------
+
+======================================================================
+ ПОШУК: СТРАТЕГІЯ FIXED-SIZE CHUNKS 
+======================================================================
+Запит: 'experimental data analysis and simulation results'
+
+1. ID чанка: chunk_fixed_0705.1045_6 | Score: 0.8217
+   Назва статті: Conjectures on exact solution of three - dimensional (3D) simple
+  orthorhombic Ising lattices
+   Категорія: cond-mat.stat-mech | Номер чанка: 6
+   Текст чанка: behavior and satisfying the scaling laws. The cooperative phenomena near the critical point are studied and the results obtained based on the conjectures are compared with those of...
+--------------------------------------------------
+
+2. ID чанка: chunk_fixed_0706.1089_6 | Score: 0.8215
+   Назва статті: Geochemistry of U and Th and its Influence on the Origin and Evolution
+  of the Crust of Earth and the Biological Evolution
+   Категорія: physics.geo-ph | Номер чанка: 6
+   Текст чанка: them. We have tried to develop an integrated view to explain some problems in the tectonics of Earth and evolution, bio-evolution, and planetary dynamics through U and Th geochemis...
+--------------------------------------------------
+
+3. ID чанка: chunk_fixed_0705.1045_7 | Score: 0.8189
+   Назва статті: Conjectures on exact solution of three - dimensional (3D) simple
+  orthorhombic Ising lattices
+   Категорія: cond-mat.stat-mech | Номер чанка: 7
+   Текст чанка: phenomenon differs with the 2D to 1D crossover phenomenon and there is a gradual crossover of the exponents from the 3D values to the 2D ones....
+--------------------------------------------------
+
+4. ID чанка: chunk_fixed_0704.2930_5 | Score: 0.8169
+   Назва статті: Probing Inward Motions in Starless Cores Using The HCN J = 1-0 Hyperfine
+  Transitions : A Pointing Survey Toward Central Regions
+   Категорія: astro-ph | Номер чанка: 5
+   Текст чанка: source are nearly similar. These may mean that most of starless cores are in similar kinematic states across the layers of the cores. We identify 17 infall candidates using all ava...
+--------------------------------------------------
+
+5. ID чанка: chunk_fixed_0705.4343_7 | Score: 0.8146
+   Назва статті: A Systematic Study of the Final Masses of Gas Giant Planets
+   Категорія: astro-ph | Номер чанка: 7
+   Текст чанка: We derive analytic formulae for the final masses in the different regions and the locations of the boundaries, which are helpful to gain a systematic understanding of the masses of...
+--------------------------------------------------
+
+======================================================================
+ ПОШУК: СТРАТЕГІЯ SEMANTIC CHUNKS 
+======================================================================
+Запит: 'experimental data analysis and simulation results'
+
+1. ID чанка: chunk_semantic_0706.1089_5 | Score: 0.8235
+   Назва статті: Geochemistry of U and Th and its Influence on the Origin and Evolution
+  of the Crust of Earth and the Biological Evolution
+   Категорія: physics.geo-ph | Номер чанка: 5
+   Текст чанка: We believe that a comprehensive exploration on energy sources and their evolution is a good way to build bridges between different disciplines of science in order to better underst...
+--------------------------------------------------
+
+2. ID чанка: chunk_semantic_0704.1127_6 | Score: 0.8216
+   Назва статті: Sensitivity of solar off-limb line profiles to electron density
+  stratification and the velocity distribution anisotropy
+   Категорія: astro-ph | Номер чанка: 6
+   Текст чанка: a temperature anisotropy) is not so clear cut as previous investigations of UVCS data suggested. ......
+--------------------------------------------------
+
+3. ID чанка: chunk_semantic_0704.2930_4 | Score: 0.8121
+   Назва статті: Probing Inward Motions in Starless Cores Using The HCN J = 1-0 Hyperfine
+  Transitions : A Pointing Survey Toward Central Regions
+   Категорія: astro-ph | Номер чанка: 4
+   Текст чанка: Moreover the dV values obtained from different HCN hyperfine lines for each source are nearly similar. These may mean that most of starless cores are in similar kinematic states ac...
+--------------------------------------------------
+
+4. ID чанка: chunk_semantic_0705.1045_6 | Score: 0.8099
+   Назва статті: Conjectures on exact solution of three - dimensional (3D) simple
+  orthorhombic Ising lattices
+   Категорія: cond-mat.stat-mech | Номер чанка: 6
+   Текст чанка: The cooperative phenomena near the critical point are studied and the results obtained based on the conjectures are compared with those of the approximation methods and the experim...
+--------------------------------------------------
+
+5. ID чанка: chunk_semantic_0705.4343_1 | Score: 0.8064
+   Назва статті: A Systematic Study of the Final Masses of Gas Giant Planets
+   Категорія: astro-ph | Номер чанка: 1
+   Текст чанка: We first derive an analytical formula for surface density profile near the planetary orbit from considerations of the balance of force and the dynamical stability....
+--------------------------------------------------

@@ -1,0 +1,27 @@
+Читаємо датасет: 10000it [00:00, 25432.57it/s]
+
+Завантажено статей:10000
+
+Розподіл за категоріями (топ-10):
+category
+astro-ph              1838
+hep-th                 680
+hep-ph                 671
+quant-ph               564
+gr-qc                  350
+cond-mat.mes-hall      307
+cond-mat.str-el        292
+cond-mat.mtrl-sci      291
+cond-mat.stat-mech     271
+math.AG                209
+Name: count, dtype: int64
+
+Розподіл за роками:
+year
+2007    10000
+Name: count, dtype: int64
+
+Приклад запису:
+{'id': '0704.0001', 'title': 'Calculation of prompt diphoton production cross sections at Tevatron and\n  LHC energies', 'abstract': 'A fully differential calculation in perturbative quantum chromodynamics is\npresented for the production of massive photon pairs at hadron colliders. All\nnext-to-leading order perturbative contributions from quark-antiquark,\ngluon-(anti)quark, and gluon-gluon subprocesses are included, as well as\nall-orders resummation of initial-state gluon radiation valid at\nnext-to-next-to-leading logarithmic accuracy. The region of phase space is\nspecified in which the calculation is most reliable. Good agreement is\ndemonstrated with data from the Fermilab Tevatron, and predictions are made for\nmore detailed tests with CDF and DO data. Predictions are shown for\ndistributions of diphoton pairs produced at the energy of the Large Hadron\nCollider (LHC). Distributions of the diphoton pairs from the decay of a Higgs\nboson are contrasted with those produced from QCD processes at the LHC, showing\nthat enhanced sensitivity to the signal can be obtained with judicious\nselection of events.', 'authors': 'BalázsC., BergerE. L., NadolskyP. M., YuanC. -P.', 'year': 2007, 'category': 'hep-ph'}
+
+Збережено вdata/arxiv_subset.parquet
